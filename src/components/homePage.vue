@@ -1,40 +1,71 @@
-<template>
-  <slider>
-    <slideritem data-index="0" data-name="MySlideName" @slideclick="handleSlideClick">
-      <img src="../assets/img/home/home4.jpg" alt="homeImg1" />
-    </slideritem>
-    <slideritem data-index="1" data-name="MySlideName" @slideclick="handleSlideClick">
-      <img src="../assets/img/home/home2.jpg" alt="homeImg2" />
-    </slideritem>
-    <slideritem>
-      <img src="../assets/img/home/home3.jpg" alt="homeImg3" />
-    </slideritem>
-  </slider>
+<template class='homePage'>
+  <agile :options="options">
+    <div class="slide">
+      <img src="../assets/img/home/home1.jpg" alt />
+    </div>
+    <div class="slide">
+      <img src="../assets/img/home/home2.jpg" alt />
+    </div>
+    <div class="slide">
+      <img src="../assets/img/home/home3.jpg" alt />
+    </div>
+    <div class="slide">
+      <img src="../assets/img/home/home4.jpg" alt />
+    </div>
+    <template slot="prevButton">
+      <i class="fas fa-chevron-left"></i>
+    </template>
+    <template slot="nextButton">
+      <i class="fas fa-chevron-right"></i>
+    </template>
+  </agile>
 </template>
 
 <script>
-import { slider, slideritem } from "vue-concise-slider";
+import { VueAgile } from "vue-agile";
+
 export default {
   name: "homePage",
-  components: {
-    slider,
-    slideritem
+  data() {
+    return {
+      options: {
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: false,
+        fade: true
+      }
+    };
   },
-  options: {
-    autoplay: "5000",
-    effect: "fade",
-    loop: true
+  components: {
+    agile: VueAgile
   }
 };
 </script>
 
 <style lang="scss" scoped>
 img {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 80%;
+  width: 70%;
+  height: 70%;
   position: relative;
-  // left: 10%;
+  left: 15%;
+}
+.homePage {
+  margin: 0;
+}
+.fa-chevron-left {
+  position: absolute;
+  top: 45%;
+  left: 16%;
+  font-size: 2rem;
+  color: white;
+  opacity: 0.3;
+}
+.fa-chevron-right {
+  position: absolute;
+  top: 45%;
+  right: 15%;
+  font-size: 2rem;
+  color: white;
+  opacity: 0.3;
 }
 </style>
