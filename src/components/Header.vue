@@ -22,10 +22,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$mainThemeColor: #dbdbdb;
 .Header {
   margin-top: 0;
   height: 100px;
-  background: white;
+  background: $mainThemeColor;
   display: flex;
   align-items: center;
   a {
@@ -51,9 +52,11 @@ export default {
   a {
     &:link,
     &:visited,
-    &:hover,
     &:active {
-      color: #fff;
+      color: #dbdbdb;
+    }
+    &:hover {
+      color: rgb(252, 143, 41);
     }
   }
 }

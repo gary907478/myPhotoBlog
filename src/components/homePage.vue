@@ -1,5 +1,5 @@
-<template class='homePage'>
-  <agile :options="options">
+<template>
+  <agile :options="options" class="homePage">
     <div class="slide">
       <img src="../assets/img/home/home1.jpg" alt />
     </div>
@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$mainThemeColor: #dbdbdb;
 img {
   width: 70%;
   height: 70%;
@@ -51,6 +52,7 @@ img {
 }
 .homePage {
   margin: 0;
+  background: $mainThemeColor;
 }
 .fa-chevron-left {
   position: absolute;
