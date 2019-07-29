@@ -1,73 +1,59 @@
 <template>
-  <agile :options="options" class="homePage">
-    <div class="slide">
-      <img src="../assets/img/home/home1.jpg" alt />
-    </div>
-    <div class="slide">
-      <img src="../assets/img/home/home2.jpg" alt />
-    </div>
-    <div class="slide">
-      <img src="../assets/img/home/home3.jpg" alt />
-    </div>
-    <div class="slide">
-      <img src="../assets/img/home/home4.jpg" alt />
-    </div>
-    <template slot="prevButton">
-      <i class="fas fa-chevron-left"></i>
-    </template>
-    <template slot="nextButton">
-      <i class="fas fa-chevron-right"></i>
-    </template>
-  </agile>
+  <a-layout id="components-layout-demo-top" class="layout">
+    <a-layout-header style="height:80px">
+      <a href="#" class="nameLogo">Gary Zhang</a>
+      <a-menu
+        theme="dark"
+        mode="horizontal"
+        :defaultSelectedKeys="['2']"
+        :style="{ lineHeight: '80px' ,float:'right', height:'80px'}"
+      >
+        <a-menu-item key="1">nav 1</a-menu-item>
+        <a-menu-item key="2">nav 2</a-menu-item>
+        <a-menu-item key="3">nav 3</a-menu-item>
+      </a-menu>
+    </a-layout-header>
+    <a-layout-content style="padding: 0 50px">
+      <a-carousel autoplay effect="fade" centerMode="ture" class="slider">
+        <div class="imgHolder">
+          <img src="../assets/img/home/home2.jpg" alt />
+        </div>
+        <div class="imgHolder">
+          <img src="../assets/img/home/home3.jpg" alt />
+        </div>
+        <div class="imgHolder">
+          <img src="../assets/img/home/home4.jpg" alt />
+        </div>
+      </a-carousel>
+    </a-layout-content>
+    <a-layout-footer style="text-align: center">Footer</a-layout-footer>
+  </a-layout>
 </template>
 
-<script>
-import { VueAgile } from "vue-agile";
+<style lang='scss' scoped>
+.nameLogo {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2rem;
+}
+.slider {
+  background: #364d79;
+  overflow: hidden;
+  display: inline;
+  align-content: center;
 
-export default {
-  name: "homePage",
-  data() {
-    return {
-      options: {
-        autoplay: true,
-        autoplaySpeed: 3000,
-        dots: false,
-        fade: true
-      }
-    };
-  },
-  components: {
-    agile: VueAgile
+  img {
+    height: 90%;
+    width: 90%;
   }
-};
-</script>
+}
 
-<style lang="scss" scoped>
-$mainThemeColor: #dbdbdb;
-img {
-  width: 70%;
-  height: 70%;
-  position: relative;
-  left: 15%;
-}
-.homePage {
-  margin: 0;
-  background: $mainThemeColor;
-}
-.fa-chevron-left {
-  position: absolute;
-  top: 45%;
-  left: 16%;
-  font-size: 2rem;
-  color: white;
-  opacity: 0.3;
-}
-.fa-chevron-right {
-  position: absolute;
-  top: 45%;
-  right: 15%;
-  font-size: 2rem;
-  color: white;
-  opacity: 0.3;
+.imgHolder {
+  padding-left: 15%;
 }
 </style>
+
+<script>
+export default {
+  name: "homePage"
+};
+</script>
