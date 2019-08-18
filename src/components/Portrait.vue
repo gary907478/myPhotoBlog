@@ -1,5 +1,5 @@
 <template>
-  <a-layout id="components-layout-demo-top" class="layout">
+  <a-layout>
     <!-- header -->
     <header>
       <!-- name logo -->
@@ -23,24 +23,20 @@
         </Slide>
       </div>
     </header>
-
-    <!-- main body -->
-    <!-- img holder-->
     <a-layout-content
       style="padding: 0 0 0 0; background-color:#ffffff;box-shadow: 10px 10px 5px grey;"
     >
-      <a-carousel autoplay effect="fade" centerMode="ture" class="slider">
-        <div class="imgHolder">
-          <img src="../assets/img/home/home2.jpg" alt />
-        </div>
-        <div class="imgHolder">
-          <img src="../assets/img/home/home3.jpg" alt />
-        </div>
-        <div class="imgHolder">
-          <img src="../assets/img/home/home4.jpg" alt />
-        </div>
-      </a-carousel>
+      <vue-easy-lightbox :visible="visible" :imgs="imgs" :index="index" @hide="handleHide"></vue-easy-lightbox>
     </a-layout-content>
+
+    <!-- <div class="imgGrid">
+      <img src="../assets/img/home/home1.jpg" alt />
+      <img src="../assets/img/home/home1.jpg" alt />
+
+      <img src="../assets/img/home/home1.jpg" alt />
+
+      <img src="../assets/img/home/home1.jpg" alt />
+    </div>-->
 
     <!-- footer -->
     <a-layout-footer style="text-align: center; background-color:#ffffff">
@@ -68,14 +64,53 @@
   </a-layout>
 </template>
 
-<style lang='scss' scoped>
+<script>
+import VueEasyLightbox from "vue-easy-lightbox";
+import { Slide } from "vue-burger-menu";
+
+export default {
+  name: "Portrait",
+  components: {
+    VueEasyLightbox,
+    Slide
+  },
+  data() {
+    return {
+      imgs: "../assets/img/home/home1.jpg",
+      visible: false,
+      index: 0
+    };
+  },
+  methods: {
+    showSingle() {
+      this.imgs = "http://via.placeholder.com/350x150";
+      this.show();
+    },
+    showMultiple() {
+      this.imgs = [
+        "http://via.placeholder.com/350x150",
+        "http://via.placeholder.com/350x150"
+      ];
+      this.index = 1; // index of imgList
+      this.show();
+    },
+    show() {
+      this.visible = true;
+    },
+    handleHide() {
+      this.visible = false;
+    }
+  }
+};
+</script>
+
+<style <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css?family=Oleo+Script&display=swap");
 
-// header css
 header {
   display: flex;
   height: 80px;
-  background-color: #fff;
+  background-color: #333;
   .nameLogo {
     margin-left: 20px;
     a {
@@ -114,26 +149,14 @@ header {
   }
 }
 
-// image slider
-.slider {
-  background: #364d79;
-  overflow: hidden;
-  display: inline;
-  align-content: center;
+.imgGrid {
+  display: grid;
 
   img {
-    height: 80%;
-    width: 80%;
+    height: 300px;
+    width: 300px;
   }
 }
-
-.imgHolder {
-  padding: 0 0 0 0px;
-  margin: 0 0 0 250px;
-  // border-style: solid;
-  // background-color: #e8a87c;
-}
-
 //footer icons
 .infoLink {
   margin-bottom: 5px;
@@ -160,13 +183,3 @@ header {
   color: #797979;
 }
 </style>
-
-<script>
-import { Slide } from "vue-burger-menu";
-export default {
-  name: "homePage",
-  components: {
-    Slide
-  }
-};
-</script>

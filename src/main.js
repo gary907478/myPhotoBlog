@@ -5,7 +5,9 @@ import App from './App'
 import router from './router'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
+import Lightbox from 'vue-easy-lightbox'
 
+Vue.use(Lightbox)
 Vue.use(Antd)
 Vue.config.productionTip = false
 
